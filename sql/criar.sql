@@ -2,7 +2,7 @@ drop table if exists Publication;
 create table Publication(
     id INT PRIMARY KEY,
     description VARCHAR(256),
-    date DATE NOT NULL,
+    registerDate DATE NOT NULL,
     price DECIMAL(7,2) NOT NULL,
     idUser INT REFERENCES User NOT NULL,
     ISBN INT REFERENCES Book NOT NULL
@@ -106,7 +106,7 @@ create table SellerEvaluation(
 drop table if exists BookEvaluation;
 create table BookEvalutaion(
     idPerson INT PRIMARY KEY,
-    ISBN INT REFERENCES Book, 
+    ISBN INT REFERENCES Book NOT NULL, 
     comment VARCHAR(256) NOT NULL,
     rate INT
 );
