@@ -1,32 +1,34 @@
+PRAGMA foreign_keys = ON;
+
 drop table if exists Publication;
 create table Publication(
-    id INT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     description VARCHAR(256),
     registerDate DATE NOT NULL,
     price DECIMAL(7,2) NOT NULL,
-    idUser INT REFERENCES User NOT NULL,
-    ISBN INT REFERENCES Book NOT NULL
+    idUser INTEGER REFERENCES User ON DELETE SET NULL ON UPDATE CASCADE,
+    ISBN INTEGER REFERENCES Book ON DELETE RESTRICT ON UPDATE CASCADE,
+    CHECK(price > 0)
 );
 
 drop table if exists Publisher;
 create table Publisher(
-    id INT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(50) UNIQUE NOT NULL
 );
 
-
 drop table if exists Selling;
 create table Selling(
-    idPublication INT PRIMARY KEY,
+    idPublication INTEGER REFERENCES Publication ON DELETE CASCADE ON UPDATE CASCADE PRIMARY KEY,
     sellingDate DATE NOT NULL,
-    idUser INT REFERENCES User NOT NULL,
-    idPayment INT REFERENCES PaymentMethod NOT NULL,
-    evaluation INT REFERENCES SellerEvaluation
+    idUser INTEGER REFERENCES User ON DELETE SET NULL ON UPDATE CASCADE,
+    idPayment INTEGER REFERENCES PaymentMethod ON DELETE RESTRICT ON UPDATE CASCADE,
+    evaluation INTEGER REFERENCES SellerEvaluation ON DELETE SET NULL ON UPDATE CASCADE
 );
 
 drop table if exists Genre;
 create table Genre(
-    id INT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(64) UNIQUE NOT NULL
 );
 
@@ -38,53 +40,53 @@ create table Language(
 
 drop table if exists Person;
 create table Person(
-    id INT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     name VARCHAR(64) NOT NULL,
     birth DATE NOT NULL
 );
 
 drop table if exists Locality;
 create table Locality(
-    localityCode INT PRIMARY KEY,
+    localityCode INTEGER PRIMARY KEY,
     name VARCHAR(128) NOT NULL,
-    nameCountry CHAR(2) REFERENCES Country NOT NULL
+    nameCountry CHAR(2) REFERENCES Country ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 drop table if exists Country;
 create table Country(
-    code INT PRIMARY KEY,
+    code INTEGER PRIMARY KEY,
     name VARCHAR(64) UNIQUE NOT NULL
 );
 
 drop table if exists User;
 create table User(
-    idPerson INT REFERENCES Person PRIMARY KEY,
-    contact INT UNIQUE NOT NULL,
+    idPerson INTEGER REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE PRIMARY KEY,
+    contact INTEGER UNIQUE NOT NULL,
     email VARCHAR(64) UNIQUE NOT NULL,
-    register DATE NOT NULL,
+    register DATE NOT NULL DEFAULT (DATETIME('now')),
     account VARCHAR(128) UNIQUE NOT NULL,
     address VARCHAR(128) NOT NULL,
-    streetCode INT NOT NULL,
-    localityCode INT REFERENCES Locality NOT NULL
+    streetCode INTEGER NOT NULL,
+    localityCode INTEGER REFERENCES Locality ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 drop table if exists Writer;
 create table Writer(
-    idPerson INT REFERENCES Person PRIMARY KEY
+    idPerson INTEGER REFERENCES Person ON DELETE CASCADE ON UPDATE CASCADE PRIMARY KEY 
 );
 
 drop table if exists Book;
 create table Book(
-    ISBN INT PRIMARY KEY,
+    ISBN INTEGER PRIMARY KEY,
     name VARCHAR(128) NOT NULL,
     publication DATE NOT NULL,
-    edition INT NOT NULL,
-    idPublisher INT REFERENCES Publisher NOT NULL
+    edition INTEGER NOT NULL,
+    idPublisher INTEGER REFERENCES Publisher ON DELETE RESTRICT ON UPDATE CASCADE
 );
 
 drop table if exists Promotion;
 create table Promotion(
-    id INT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     start DATE NOT NULL,
     end DATE,
     percentage DECIMAL(6,4) NOT NULL
@@ -92,22 +94,51 @@ create table Promotion(
  
 drop table if exists PaymentMethod;
 create table PaymentMethod(
-    id INT PRIMARY KEY,
+    id INTEGER PRIMARY KEY,
     name VARCHAR(32) NOT NULL
 );
 
 drop table if exists SellerEvaluation;
 create table SellerEvaluation(
-    id INT PRIMARY KEY,
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
     comment VARCHAR(256),
-    rate INT NOT NULL
+    rate INTEGER NOT NULL
 );
 
 drop table if exists BookEvaluation;
 create table BookEvaluation(
-    idPerson INT PRIMARY KEY,
-    ISBN INT REFERENCES Book NOT NULL, 
+    idPerson INTEGER PRIMARY KEY AUTOINCREMENT,
+    ISBN INTEGER REFERENCES Book ON DELETE CASCADE ON UPDATE CASCADE, 
     comment VARCHAR(256) NOT NULL,
-    rate INT
+    rate INTEGER
+);
+
+drop table if exists BookWriter;
+create table BookWriter(
+    idWriter INTEGER REFERENCES Writer ON DELETE RESTRICT ON UPDATE CASCADE,
+    ISBN INTEGER REFERENCES Book ON DELETE RESTRICT ON UPDATE CASCADE,
+    PRIMARY KEY(idWriter, ISBN)
+);
+
+drop table if exists BookGenre; 
+create table BookGenre(
+    ISBN INTEGER REFERENCES Book ON DELETE RESTRICT ON UPDATE CASCADE,
+    idGenre INTEGER REFERENCES Genre ON DELETE RESTRICT ON UPDATE CASCADE,
+    PRIMARY KEY (ISBN, idGenre)
+    
+);
+
+drop table if exists BookLanguage;
+create table BookLanguage(
+    ISBN INTEGER REFERENCES Book ON DELETE RESTRICT ON UPDATE CASCADE,
+    codeLanguage CHAR(2) REFERENCES Language ON DELETE RESTRICT ON UPDATE CASCADE,
+    PRIMARY KEY(ISBN, codeLanguage)
+);
+
+drop table if exists PromotionPublication; 
+create table PromotionPublication(
+    idPublication INTEGER REFERENCES Publication ON DELETE CASCADE ON UPDATE CASCADE, 
+    idPromotion INTEGER REFERENCES Promotion ON DELETE CASCADE ON UPDATE CASCADE,
+    PRIMARY KEY(idPublication, idPromotion)
 );
 
