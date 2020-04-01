@@ -18,10 +18,10 @@ create table Publisher(
 drop table if exists Selling;
 create table Selling(
     idPublication INT PRIMARY KEY,
-    date DATE NOT NULL,
+    sellingDate DATE NOT NULL,
     idUser INT REFERENCES User NOT NULL,
     idPayment INT REFERENCES PaymentMethod NOT NULL,
-    evaluation INT REFERENCES SellerEvaluation,
+    evaluation INT REFERENCES SellerEvaluation
 );
 
 drop table if exists Genre;
@@ -104,12 +104,10 @@ create table SellerEvaluation(
 );
 
 drop table if exists BookEvaluation;
-create table BookEvalutaion(
+create table BookEvaluation(
     idPerson INT PRIMARY KEY,
     ISBN INT REFERENCES Book NOT NULL, 
     comment VARCHAR(256) NOT NULL,
     rate INT
 );
-
-
 
