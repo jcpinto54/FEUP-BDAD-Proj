@@ -1,0 +1,12 @@
+PT, Portuguese
+EN, English
+DE, German
+ES, Spanish
+IT, Italian
+CZ, Czech
+FR, French
+RO, Romanian
+PL, Polish
+HU, Hungarian
+SV, Swedish
+NL, Dutch

@@ -2,7 +2,7 @@ PRAGMA foreign_keys = ON;
 
 drop table if exists Country;
 create table Country(
-    code INTEGER PRIMARY KEY,
+    code CHAR(2) PRIMARY KEY,
     name VARCHAR(64) UNIQUE NOT NULL
 );
 

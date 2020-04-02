@@ -1,0 +1,13 @@
+PT, Portugal
+UK, United Kingdom
+DE, Germany
+ES, Spain
+IT, Italy
+CZ, Czech Republic
+FR, France
+RO, Romania
+AT, Austria
+PL, Poland
+HU, Hungary
+SE, Sweden
+NL, Netherlands
