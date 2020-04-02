@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="720efd64-fa73-474c-b898-4d16525c0dbb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../sql/criar.sql" beforeDir="false" afterPath="$PROJECT_DIR$/../sql/criar.sql" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DatabaseView">
+    <option name="SHOW_INTERMEDIATE" value="true" />
+    <option name="GROUP_DATA_SOURCES" value="true" />
+    <option name="GROUP_SCHEMA" value="true" />
+    <option name="GROUP_CONTENTS" value="false" />
+    <option name="SORT_POSITIONED" value="false" />
+    <option name="SHOW_EMPTY_GROUPS" value="false" />
+    <option name="AUTO_SCROLL_FROM_SOURCE" value="false" />
+    <option name="HIDDEN_KINDS">
+      <set />
+    </option>
+    <expand />
+    <select />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Python Script" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1ZzUUCkdB1D9yXjZHba4AhFsh8K" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/generator.py" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+  </component>
+  <component name="RunManager">
+    <configuration name="generator" type="PythonConfigurationType" factoryName="Python" nameIsGenerated="true">
+      <module name="data" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="$USER_HOME$/Applications/anaconda/envs/ox/bin/python" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/generator.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="ServiceViewManager">
+    <option name="viewStates">
+      <list>
+        <serviceView>
+          <treeState>
+            <expand />
+            <select />
+          </treeState>
+        </serviceView>
+      </list>
+    </option>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="720efd64-fa73-474c-b898-4d16525c0dbb" name="Default Changelist" comment="" />
+      <created>1585841429350</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1585841429350</updated>
+      <workItem from="1585841431303" duration="4863000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="278" y="59" width="800" height="675" key="#SQL_Dialects" timestamp="1585844037767">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state x="278" y="59" width="800" height="675" key="#SQL_Dialects/0.28.1366.740@0.28.1366.740" timestamp="1585844037767" />
+    <state x="141" y="56" width="800" height="675" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1585844044728">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state x="141" y="56" width="800" height="675" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.28.1366.740@0.28.1366.740" timestamp="1585844044728" />
+    <state x="416" y="145" width="524" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1585845856657">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state x="416" y="145" width="524" height="503" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.28.1366.740@0.28.1366.740" timestamp="1585845856657" />
+    <state x="466" y="156" width="424" height="482" key="FileChooserDialogImpl" timestamp="1585842608313">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state x="466" y="156" width="424" height="482" key="FileChooserDialogImpl/0.28.1366.740@0.28.1366.740" timestamp="1585842608313" />
+    <state width="1316" height="173" key="GridCell.Tab.0.bottom" timestamp="1585846173058">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state width="1316" height="173" key="GridCell.Tab.0.bottom/0.28.1366.740@0.28.1366.740" timestamp="1585846173058" />
+    <state width="1316" height="173" key="GridCell.Tab.0.center" timestamp="1585846173057">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state width="1316" height="173" key="GridCell.Tab.0.center/0.28.1366.740@0.28.1366.740" timestamp="1585846173057" />
+    <state width="1316" height="173" key="GridCell.Tab.0.left" timestamp="1585846173057">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state width="1316" height="173" key="GridCell.Tab.0.left/0.28.1366.740@0.28.1366.740" timestamp="1585846173057" />
+    <state width="1316" height="173" key="GridCell.Tab.0.right" timestamp="1585846173057">
+      <screen x="0" y="28" width="1366" height="740" />
+    </state>
+    <state width="1316" height="173" key="GridCell.Tab.0.right/0.28.1366.740@0.28.1366.740" timestamp="1585846173057" />
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/data$generator.coverage" NAME="generator Coverage Results" MODIFIED="1585846173041" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+  </component>
+</project>
