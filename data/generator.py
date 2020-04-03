@@ -96,7 +96,7 @@ with open("povoar.sql", "w+") as output:
             output.write("INSERT INTO Person(name, birth) VALUES('{}', '{}');\n".format(person, birthday))
             output.write("INSERT INTO BookWriter(idWriter, ISBN) VALUES({}, {});\n".format(userId, ISBNs[bookNumber]))
             userId += 1
-        i = random.randint(0, 1000) // 997
+        i = random.randint(0, 20) // 17 + 1
         for _ in range(i):
             output.write("INSERT INTO BookLanguage(ISBN, codeLanguage) VALUES({}, '{}');\n".format(ISBNs[bookNumber], languages[random.randint(0, len(languages) - 1)][0]))
         i = random.randint(0, 2)
