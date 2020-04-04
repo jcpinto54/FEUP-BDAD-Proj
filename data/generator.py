@@ -100,41 +100,50 @@ with open("povoar.sql", "w+") as output:
                 ISBNs[bookNumber], book, publication, random.randint(1, 15), random.randint(1, len(publishers))
             ))
         for person in writer:
-            if writer not in writers:
-                writers.append(writer)
+            if person not in writers:
+                writers.append(person)
                 birthday = str(random.randint(1700, 2003)) + "-" + str(random.randint(1, 12)) + "-" + str(
                     random.randint(1, 29))
                 output.write("INSERT INTO Person(name, birth) VALUES('{}', '{}');\n".format(person, birthday))
+                output.write("INSERT INTO Writer(idPerson) VALUES({});\n".format(userId))
                 userId += 1
-            writerId = writers.index(writer)
+            writerId = writers.index(person) + len(names) + 1
             output.write("INSERT INTO BookWriter(idWriter, ISBN) VALUES({}, {});\n".format(writerId, ISBNs[bookNumber]))
         i = random.randint(0, 20) // 17 + 1
+        l = []
         for _ in range(i):
-            output.write("INSERT INTO BookLanguage(ISBN, codeLanguage) VALUES({}, '{}');\n".format(ISBNs[bookNumber],
-                                                                                                   languages[
-                                                                                                       random.randint(0,
-                                                                                                                      len(
-                                                                                                                          languages) - 1)][
-                                                                                                       0]))
-        i = random.randint(0, 2)
+            aux = random.randint(0, len(languages) - 1)
+            if aux not in l:
+                l.append(aux)
+                output.write("INSERT INTO BookLanguage(ISBN, codeLanguage) VALUES({}, '{}');\n".format(ISBNs[bookNumber], languages[aux][0]))
+        i = random.randint(0, 5) // 4 + 1
+        g = []
         for _ in range(i):
-            output.write("INSERT INTO BookGenre(ISBN, idGenre) VALUES({}, {});\n".format(ISBNs[bookNumber],
-                                                                                         random.randint(0, len(
-                                                                                             genres) - 1)))
+            aux = random.randint(1, len(genres))
+            if aux not in g:
+                g.append(aux)
+                output.write("INSERT INTO BookGenre(ISBN, idGenre) VALUES({}, {});\n".format(ISBNs[bookNumber], aux))
         bookNumber += 1
 
     for _ in range(20):
-        p = random.randint(0, len(person) - 1)
+        p = random.randint(1, len(person))
         b = ISBNs[random.randint(0, len(books) - 1)]
-        output.write("INSERT INTO BookEvaluation(idPerson, ISBN, comment, rate) VALUES({}, {}, '{}', {});\n".format(p, b, "comment", random.randint(1, 5)))
+        output.write(
+            "INSERT INTO BookEvaluation(idPerson, ISBN, comment, rate) VALUES({}, {}, '{}', {});\n".format(p, b,
+                                                                                                           "comment",
+                                                                                                           random.randint(
+                                                                                                               1, 5)))
 
     for _ in range(30):
         description = "description"
         price = random.randint(0, 100000) / 100
-        idUser = random.randint(0, len(person) - 1)
+        idUser = random.randint(1, len(person))
         ISBN = ISBNs[random.randint(0, len(books) - 1)]
         output.write(
-            "INSERT INTO Publication(description, price, idUser, ISBN) VALUES('{}', {}, {}, {});\n".format(description, price, idUser, ISBN))
+            "INSERT INTO Publication(description, price, idUser, ISBN) VALUES('{}', {}, {}, {});\n".format(description,
+                                                                                                           price,
+                                                                                                           idUser,
+                                                                                                           ISBN))
 
     for promotionId in range(1, 7):
         start = str(random.randint(2010, 2020)) + "-" + str(random.randint(1, 12)) + "-" + str(
@@ -142,8 +151,10 @@ with open("povoar.sql", "w+") as output:
         end = str(random.randint(2020, 2030)) + "-" + str(random.randint(1, 12)) + "-" + str(
             random.randint(1, 30))
         percentage = random.randint(1, 10000) / 100
-        output.write("INSERT INTO Promotion(start, end, percentage) VALUES('{}', '{}', {});\n".format(start, end, percentage))
-        output.write("INSERT INTO PromotionPublication(idPublication, idPromotion) VALUES({}, {});\n".format(random.randint(1, 30), promotionId))
+        output.write(
+            "INSERT INTO Promotion(start, end, percentage) VALUES('{}', '{}', {});\n".format(start, end, percentage))
+        output.write("INSERT INTO PromotionPublication(idPublication, idPromotion) VALUES({}, {});\n".format(
+            random.randint(1, 30), promotionId))
 
     # SellerEvaluation(comment, rate)
     # Selling(idPublication, idUser, idPayment, evaluation)

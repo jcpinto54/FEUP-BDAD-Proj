@@ -115,10 +115,11 @@ create table Promotion(
 
 drop table if exists BookEvaluation;
 create table BookEvaluation(
-    idPerson INTEGER REFERENCES User ON DELETE SET NULL ON UPDATE CASCADE PRIMARY KEY,
+    idPerson INTEGER REFERENCES User ON DELETE SET NULL ON UPDATE CASCADE,
     ISBN INTEGER REFERENCES Book ON DELETE CASCADE ON UPDATE CASCADE, 
     comment VARCHAR(256) NOT NULL,
     rate INTEGER,
+    PRIMARY KEY(idPerson, ISBN),
     CONSTRAINT rateRange CHECK(rate <= 5 and rate >= 0)
 );
 
