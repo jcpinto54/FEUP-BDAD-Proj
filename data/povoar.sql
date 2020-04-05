@@ -1,3 +1,5 @@
+PRAGMA foreign_keys = ON;
+
 INSERT INTO Country VALUES('PT', 'Portugal');
 INSERT INTO Country VALUES('UK', 'United Kingdom');
 INSERT INTO Country VALUES('DE', 'Germany');
