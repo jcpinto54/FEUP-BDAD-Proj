@@ -1529,6 +1529,3 @@ INSERT INTO Selling(idPublication, idUser,idPayment, evaluation) VALUES(28,40,1,
 INSERT INTO SellerEvaluation(comment,rate) VALUES ('comment',2);
 INSERT INTO Selling(idPublication, idUser,idPayment, evaluation) VALUES(29,46,2,20);
 INSERT INTO SellerEvaluation(comment,rate) VALUES ('comment',3);
-
-
-
