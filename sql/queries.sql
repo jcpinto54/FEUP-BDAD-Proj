@@ -1,4 +1,9 @@
-
+-- easy1: quais os livros mais bem avaliados pelos habitantes de Portugal?
+SELECT isbn, AVG(rate) FROM BookEvaluation NATURAL JOIN (
+  SELECT idperson, code FROM User NATURAL JOIN (
+    SELECT localitycode, code FROM Locality JOIN Country WHERE namecountry = code
+  )
+) GROUP BY isbn ORDER BY rate DESC;
 
 -- avg for the easy question 3 
 select avg(q.price), b.name, p.isbn 
