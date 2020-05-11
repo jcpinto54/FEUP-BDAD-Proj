@@ -5,6 +5,17 @@ SELECT isbn, AVG(rate) FROM BookEvaluation NATURAL JOIN (
   )
 ) GROUP BY isbn ORDER BY rate DESC;
 
+-- medium1: qual o livro vendido em mais países?
+SELECT isbn, max(countries) FROM (
+  SELECT isbn, COUNT(DISTINCT code) AS countries FROM (
+    SELECT isbn, code FROM Publication JOIN (
+      SELECT idperson, code FROM User NATURAL JOIN (
+        SELECT localitycode, code FROM Locality JOIN Country WHERE namecountry = code
+      )
+    ) WHERE idUser = idperson
+  ) GROUP BY isbn
+);
+
 -- avg for the easy question 3 
 select avg(q.price), b.name, p.isbn 
 from (  select price, isbn 
