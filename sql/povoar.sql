@@ -1475,17 +1475,17 @@ INSERT INTO Publication(description, price, idUser, ISBN) VALUES('Se há livro q
 INSERT INTO Publication(description, price, idUser, ISBN) VALUES('Um clássico da literatura. Um livro que toda a gente devia ler. Bons momentos de prazer...', 531.96, 5, 9310026749324);
 INSERT INTO Publication(description, price, idUser, ISBN) VALUES('Livro em bom estado, com pouco uso! Enredo muito interessante. Obra-prima!', 370.38, 9, 3417019618691);
 INSERT INTO Publication(description, price, idUser, ISBN) VALUES('Comprei este livro há 2 anos. Gostei muito de lê-lo. Agora está na prateleira à procura de um novo dono! É muito bom!', 525.39, 12, 7058707604697);
-INSERT INTO Promotion(start, end, percentage) VALUES('2020-12-24', '2029-9-12', 6.65);
+INSERT INTO Promotion(start, end, percentage) VALUES('2020-12-24', '2029-09-12', 6.65);
 INSERT INTO PromotionPublication(idPublication, idPromotion) VALUES(24, 1);
-INSERT INTO Promotion(start, end, percentage) VALUES('2013-11-30', '2020-3-13', 69.53);
+INSERT INTO Promotion(start, end, percentage) VALUES('2013-11-30', '2020-03-13', 69.53);
 INSERT INTO PromotionPublication(idPublication, idPromotion) VALUES(24, 2);
-INSERT INTO Promotion(start, end, percentage) VALUES('2013-5-8', '2022-7-1', 22.31);
+INSERT INTO Promotion(start, end, percentage) VALUES('2013-05-08', '2022-07-01', 22.31);
 INSERT INTO PromotionPublication(idPublication, idPromotion) VALUES(2, 3);
-INSERT INTO Promotion(start, end, percentage) VALUES('2018-12-29', '2024-1-28', 69.06);
+INSERT INTO Promotion(start, end, percentage) VALUES('2018-12-29', '2024-01-28', 69.06);
 INSERT INTO PromotionPublication(idPublication, idPromotion) VALUES(18, 4);
-INSERT INTO Promotion(start, end, percentage) VALUES('2018-7-26', '2027-10-16', 16.49);
+INSERT INTO Promotion(start, end, percentage) VALUES('2018-07-26', '2027-10-16', 16.49);
 INSERT INTO PromotionPublication(idPublication, idPromotion) VALUES(19, 5);
-INSERT INTO Promotion(start, end, percentage) VALUES('2011-7-19', '2022-8-16', 58.57);
+INSERT INTO Promotion(start, end, percentage) VALUES('2011-07-19', '2022-08-16', 58.57);
 INSERT INTO PromotionPublication(idPublication, idPromotion) VALUES(22, 6);
 
 INSERT INTO SellerEvaluation(comment,rate) VALUES ('Mal educado e de pouca confiança... Tentou-me burlar!',1);
