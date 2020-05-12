@@ -5,27 +5,14 @@ SELECT isbn, AVG(rate) FROM BookEvaluation NATURAL JOIN (
   )
 ) GROUP BY isbn ORDER BY rate DESC;
 
--- easy2: qual o id e o nome do método de pagamento menos utilizado?
-select idpayment, name
-from PaymentMethod P,
-	(Select idpayment, Count(idpayment) as C
-     from Selling
-     GROUP by idpayment
-     having C = (Select min(c) from
-			(Select Count (idpayment) as c
-     			from Selling
-    	 		GROUP by idpayment)
-     )) I1   
-where P.id = I1.idpayment;
-
--- easy3: qual o preço médio de venda de cada um dos livros?
+-- easy2: qual o preço médio de venda de cada um dos livros?
 select avg(q.price), b.name, p.isbn 
 from (  select price, isbn 
         from publication) as q, book b, publication p
 where q.isbn = b.isbn and p.isbn = b.isbn
 group by p.isbn; 
 
--- easy4: qual mês tem maior número de promoções?
+-- easy3: qual mês tem maior número de promoções?
 select strftime('%m', start) month, count(idpromotion) as nrPromotions
 from book natural JOIN publication
 	join publisher on publisher.id = book.idpublisher
@@ -40,16 +27,7 @@ from book natural JOIN publication
               join Promotion on Promotion.id = PromotionPublication.idpromotion
               group by strftime('%m', start)));
 
--- medium1: qual o isbn do livro vendido em mais países e qual o número de países em que se vendeu o livro?
-SELECT isbn, max(countries) FROM (
-	SELECT isbn, code, COUNT(DISTINCT code) AS countries FROM Publication JOIN (
-		SELECT idperson, code FROM User NATURAL JOIN (
-			SELECT localitycode, code FROM Locality JOIN Country WHERE namecountry = code
-		)
-	) WHERE idUser = idperson GROUP BY isbn
-);
-
---medium2: qual o id, o nome e quantidade de livros em promoção publicadora que possui menos livros em promoção?
+-- medium1: qual o id, o nome e quantidade de livros em promoção da editora que possui menos livros em promoção?
 select idpublisher, Publisher.name, count(idpublisher) as C
 from book natural JOIN publication
 	join publisher on publisher.id = book.idpublisher
@@ -65,7 +43,7 @@ having C = (Select max(c) from
             group by idpublisher
      ))   ;
 
--- medium3: quais as percentagens mais comuns aplicadas em promoções (intervalos de 10 valores) e quantas vezes cada percentagem é utilizada? 
+-- medium2: quais as percentagens mais comuns aplicadas em promoções (intervalos de 10 valores) e quantas vezes cada percentagem é utilizada? 
 -- Sugestão de aplicação de promoção aos vendedores 
 create temp view if not exists promoPubli as 
 select idpublication, round(percentage/10)*10 as percentage_10
@@ -77,7 +55,7 @@ from promoPubli
 group by percentage_10 
 order by frequency desc ; 
 
--- medium4: quais os id's dos utilizadores que possuem publicações de livros com avarage rating maior ou igual a 4 do idioma francês?
+-- medium3: quais os id's dos utilizadores que possuem publicações de livros com avarage rating maior ou igual a 4 do idioma francês?
 -- Porque é relevante: sugestão de compra para usuários
 create temp view if not exists bookRating as 
 select be.isbn, avg(rate) 
@@ -88,6 +66,13 @@ group by be.isbn;
 select p.idUser, p.isbn, l.code 
 from publication p, BookLanguage bl, language l
 where p.isbn in (select isbn from bookRating) and bl.codeLanguage = l.code and bl.isbn = p.isbn and l.name = 'French'; 
+
+-- medium4: qual o id dos usuários que tiveram todos os seus livros vendidos e quantos livros venderam?
+-- Quem vendeu todos os livros 
+select distinct(sold.idUser), soldBooks, nPublications
+from    (select idUser, count(idPublication) soldBooks from selling group by idUser) as sold, 
+        (select idUser, count(id) nPublications from publication group by idUser) as publications 
+where sold.idUser = publications.idUser and nPublications = soldBooks and nPublications != 0; 
 
 -- hard1: qual a diferença da nota média das compras entre utilizadores de Portugal e de fora?
 SELECT PT.avg - EX.avg FROM (
@@ -108,7 +93,7 @@ SELECT PT.avg - EX.avg FROM (
     )
 ) AS EX;
 
--- hard2: qual o idioma mais vendido em cada país e sua percentagem das vendas? (falta fazer percentagem!!)
+-- hard2: qual o idioma mais vendido em cada país e sua percentagem das vendas nesse país?
 drop view if exists countryLanguageSales;
 create temp view if not exists countryLanguageSales as 
 select DISTINCT Country.code CC, Language.code LC, Count(Selling.idpublication) nrSales, Country.name CountryN, Language.name LangN
@@ -136,18 +121,3 @@ select CountryN Country, LangN Language,  (100 * nrSales/totalSales) percentage 
       join Country on Locality.nameCountry = Country.code
   group by Country.code
 );
-
--- hard3: qual o id dos usuários que tiveram todos os seus livros vendidos?
--- Quantidade de publicações de cada utilizador
-select idUser, count(id)
-from publication 
-group by idUser; 
--- Quantas vendas foram feitas por uma pessoa 
-select idUser, count(idPublication) sold 
-from selling
-group by idUser; 
--- Quem vendeu todos os livros 
-select distinct(sold.idUser), soldBooks, nPublications
-from    (select idUser, count(idPublication) soldBooks from selling group by idUser) as sold, 
-        (select idUser, count(id) nPublications from publication group by idUser) as publications 
-where sold.idUser = publications.idUser and nPublications = soldBooks and nPublications != 0; 
