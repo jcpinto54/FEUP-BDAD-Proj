@@ -1,3 +1,33 @@
+﻿-- easy2
+-- n está a funcionar
+select idpayment, name
+from PaymentMethod P,
+	(Select idpayment, Count(idpayment) as C
+     from Selling
+     GROUP by idpayment
+     having C = (Select min(c) from
+			(Select Count (idpayment) as c
+     			from Selling
+    	 		GROUP by idpayment)
+     )) I1   
+where P.id = I1.idpayment;
+
+--medium2
+select idpublisher, Publisher.name, count(idpublisher) as C
+from book natural JOIN publication
+	join publisher on publisher.id = book.idpublisher
+	join PromotionPublication on PromotionPublication.idPublication = Publication.id
+    join Promotion on Promotion.id = PromotionPublication.idpromotion
+group by idpublisher
+having C = (Select max(c) from
+			(select idpublisher, count(idpublisher) as C
+			from book natural JOIN publication
+            join publisher on publisher.id = book.idpublisher
+            join PromotionPublication on PromotionPublication.idPublication = Publication.id
+            join Promotion on Promotion.id = PromotionPublication.idpromotion
+            group by idpublisher
+     ))   ;
+
 
 
 -- avg for the easy question 3 
@@ -6,6 +36,11 @@ from (  select price, isbn
         from publication) as q, book b, publication p
 where q.isbn = b.isbn and p.isbn = b.isbn
 group by p.isbn; 
+
+
+--easy4
+--problema igual ao easy2
+
 
 --medium4: quais os id's dos utilizadores que possuem publicações de livros com avarage rating maior ou igual a 4 do idioma francês?
 -- Porque é relevante: sugestão de compra para usuários
