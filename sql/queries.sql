@@ -1,3 +1,4 @@
+﻿
 ﻿-- easy2
 -- n está a funcionar
 select idpayment, name
@@ -28,7 +29,40 @@ having C = (Select max(c) from
             group by idpublisher
      ))   ;
 
+-- easy1: quais os livros mais bem avaliados pelos habitantes de Portugal?
+SELECT isbn, AVG(rate) FROM BookEvaluation NATURAL JOIN (
+  SELECT idperson, code FROM User NATURAL JOIN (
+    SELECT localitycode, code FROM Locality JOIN Country WHERE namecountry = code
+  )
+) GROUP BY isbn ORDER BY rate DESC;
 
+-- medium1: qual o livro vendido em mais países?
+SELECT isbn, max(countries) FROM (
+	SELECT isbn, code, COUNT(DISTINCT code) AS countries FROM Publication JOIN (
+		SELECT idperson, code FROM User NATURAL JOIN (
+			SELECT localitycode, code FROM Locality JOIN Country WHERE namecountry = code
+		)
+	) WHERE idUser = idperson GROUP BY isbn
+);
+
+-- hard1: qual a diferença da nota média das compras entre utilizadores de Portugal e de fora?
+SELECT PT.avg - EX.avg FROM (
+    SELECT AVG(rate) AS avg FROM SellerEvaluation NATURAL JOIN (
+        SELECT evaluation AS id FROM Selling NATURAL JOIN (
+            SELECT idperson AS iduser, code FROM User NATURAL JOIN (
+                SELECT localitycode, code FROM Locality JOIN Country WHERE namecountry = code
+            ) WHERE code = 'PT'
+        )
+    )
+) AS PT,
+    (SELECT AVG(rate) AS avg FROM SellerEvaluation NATURAL JOIN (
+        SELECT evaluation AS id FROM Selling NATURAL JOIN (
+            SELECT idperson AS iduser, code FROM User NATURAL JOIN (
+                SELECT localitycode, code FROM Locality JOIN Country WHERE namecountry = code
+            ) WHERE code <> 'PT'
+        )
+    )
+) AS EX;
 
 -- avg for the easy question 3 
 select avg(q.price), b.name, p.isbn 
