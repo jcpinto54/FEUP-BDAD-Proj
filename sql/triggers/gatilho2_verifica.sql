@@ -7,15 +7,11 @@ INSERT INTO Publication(description, price, idUser, ISBN) VALUES('TEST3', 231.0,
 
 INSERT INTO Selling(idPublication, idUser,idPayment, evaluation) VALUES(33, 192, 1, 5);
 
+select * from Publication order by iduser;
+
 DELETE FROM User where User.idPerson = 192;
 
 select * from Publication order by iduser;
-select idperson from User order by idperson;
-
-select iduser, id
-from Publication
-where Publication.id not in (
-  select idpublication from selling);
 
 delete from Selling where selling.idPublication = 33;
 DELETE FROM Publication where Publication.id = 33;
