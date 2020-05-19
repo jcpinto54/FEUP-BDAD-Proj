@@ -32,4 +32,4 @@ delete from User
 where idPerson = 184 or idPerson = 183 or idPerson = 182 ; 
 
 
---ATENTION: do not try again without executing gatilho3_remove.sql
+--ATTENTION: do not try again without executing gatilho3_remove.sql
