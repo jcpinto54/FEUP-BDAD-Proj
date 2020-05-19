@@ -1,5 +1,5 @@
 Create Trigger deleteUser
-After Delete On User
+Before Delete On User
 For Each Row
 Begin
 Delete from Publication where (
