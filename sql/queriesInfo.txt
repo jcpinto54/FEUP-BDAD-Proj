@@ -1,13 +1,13 @@
--- easy1: qual o isbn e a m�dia das classifica��es dos livros mais bem avaliados pelos habitantes de Portugal?
--- easy2: qual o pre�o m�dio de venda de cada um dos livros?
--- easy3: qual m�s tem maior n�mero de promo��es?
--- medium1: qual o id, o nome e quantidade de livros em promo��o da editora que possui menos livros em promo��o?
--- medium2: quais as percentagens mais comuns aplicadas em promo��es (intervalos de 10 valores) e quantas vezes cada percentagem � utilizada? 
--- medium3: quais os id's dos utilizadores que possuem publica��es de livros com avarage rating maior ou igual a 4 do idioma franc�s?
--- medium4: qual o id dos usu�rios que tiveram todos os seus livros vendidos e quantos livros venderam?
--- hard1: qual a diferen�a da nota m�dia das compras entre utilizadores de Portugal e de fora?
--- hard2: qual o idioma mais vendido em cada pa�s e sua percentagem das vendas nesse pa�s?
+-- easy1: qual o isbn e a média das classificações dos livros mais bem avaliados pelos habitantes de Portugal?
+-- easy2: qual o preço médio de venda de cada um dos livros?
+-- easy3: qual mês tem maior número de promoções?
+-- medium1: qual o id, o nome e quantidade de livros em promoção da editora que possui menos livros em promoção?
+-- medium2: quais as percentagens mais comuns aplicadas em promoções (intervalos de 10 valores) e quantas vezes cada percentagem é utilizada? 
+-- medium3: quais os id's dos utilizadores que possuem publicações de livros com avarage rating maior ou igual a 4 do idioma francês?
+-- medium4: qual o id dos usuários que tiveram todos os seus livros vendidos e quantos livros venderam?
+-- hard1: qual a diferença da nota média das compras entre utilizadores de Portugal e de fora?
+-- hard2: qual o idioma mais vendido em cada país e sua percentagem das vendas nesse país?
 -- hard3: quais os utilizadores que compraram um livro em comum?
 
 notas da professora:
--easy1 s� est� a dar order by
+-easy1 só está a dar order by
