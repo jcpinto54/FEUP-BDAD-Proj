@@ -15,3 +15,4 @@ select * from Publication order by iduser;
 
 delete from Selling where selling.idPublication = 33;
 DELETE FROM Publication where Publication.id = 33;
+delete from Person where id = 192;
