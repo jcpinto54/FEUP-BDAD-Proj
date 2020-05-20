@@ -1529,3 +1529,4 @@ INSERT INTO Selling(idPublication, idUser,idPayment, evaluation) VALUES(28,40,1,
 INSERT INTO SellerEvaluation(comment,rate) VALUES ('Algumas páginas do livro que me vendeu estavam rasgadas ou muito escritas.',2);
 INSERT INTO Selling(idPublication, idUser,idPayment, evaluation) VALUES(29,46,2,20);
 INSERT INTO SellerEvaluation(comment,rate) VALUES ('Se eu não fosse teimoso, tinha pago o meu salário por um livro!',3);
+INSERT INTO Selling(idpublication, iduser, idpayment) VALUES(16, 13, 1);
