@@ -9,5 +9,3 @@
 -- hard2: qual o idioma mais vendido em cada país e sua percentagem das vendas nesse país?
 -- hard3: quais os utilizadores que compraram um livro em comum?
 
-notas da professora:
--easy1 só está a dar order by
